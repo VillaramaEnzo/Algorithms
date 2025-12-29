@@ -1,0 +1,83 @@
+.cell {
+  border: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cell.empty {
+  background-color: #ffffff;
+}
+
+.cell.wall {
+  background-color: #2c3e50;
+}
+
+.cell.start {
+  background-color: #27ae60;
+  border: 2px solid #1e8449;
+}
+
+.cell.end {
+  background-color: #e74c3c;
+  border: 2px solid #c0392b;
+}
+
+.cell.visited {
+  background-color: #3498db; /* Base visited color - light blue */
+  animation: visitAnimation 0.3s ease;
+}
+
+/* Darkening effect for multiple visits - gradient that stays distinguishable from walls */
+/* Wall color is #2c3e50 (dark blue-gray), so we'll keep visited colors in a blue range that's clearly different */
+.cell.visited.visited-1 {
+  background-color: #3498db; /* 1 visit - light blue */
+}
+
+.cell.visited.visited-2 {
+  background-color: #2980b9; /* 2 visits - medium blue */
+}
+
+.cell.visited.visited-3 {
+  background-color: #2471a3; /* 3 visits - darker blue */
+}
+
+.cell.visited.visited-4 {
+  background-color: #21618c; /* 4 visits - darker blue */
+}
+
+.cell.visited.visited-5 {
+  background-color: #1e5a80; /* 5+ visits - darkest blue, but still clearly distinguishable from walls (#2c3e50) */
+}
+
+.cell.path {
+  background-color: #f1c40f;
+  animation: pathAnimation 0.3s ease;
+}
+
+.cell.filled-dead-end {
+  background-color: #bdc3c7; /* Light gray color for filled dead ends */
+  animation: visitAnimation 0.3s ease;
+}
+
+@keyframes visitAnimation {
+  0% {
+    transform: scale(0.8);
+    background-color: #5dade2;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pathAnimation {
+  0% {
+    transform: scale(0.9);
+    background-color: #f7dc6f;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
